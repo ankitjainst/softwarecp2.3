@@ -1,0 +1,23 @@
+How the image was built and pushed
+-------------------------
+sudo docker build -t softwarecp2.3 .
+sudo docker tag softwarecp2.3 ankitjainst/softwarecp2.3:latest
+sudo docker push ankitjainst/softwarecp2.3
+
+How to start a new container from the image
+-------------------------------------------
+sudo docker run -i -t \
+-v ~/erpanderp/docker/home.host:/home/host \
+-v ~/erpanderp/docker/settingsAndData/mvn:/root/.m2 \
+-v ~/erpanderp/docker/settingsAndData/idea:/root/.IdeaIC2016.3 \
+-p 52022:22 --name cp2.3 softwarecp2.3 
+
+and then exit from the container
+
+Restart the container
+---------------------
+sudo docker start cp2.3
+
+SSH onto the container
+-----------------------
+ssh -X root@172.17.0.2
